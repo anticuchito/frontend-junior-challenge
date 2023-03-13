@@ -1,16 +1,21 @@
-import React from 'react';
+import { ChangeEventHandler, MouseEventHandler } from 'react';
 import './styles.css';
 
-const TodoListItem = ({ onCheck, checked, onDelete, label }) => (
+const TodoListItem = ({
+  onCheck,
+  checked,
+  onDelete,
+  label,
+}: TodoListParamsTypes) => (
   <div className='todo-list-item'>
     <div
-      tabIndex='0'
+      tabIndex={0}
       role='checkbox'
       aria-checked
       className='todo-list-item-content'
     >
       <input
-        tabIndex='-1'
+        tabIndex={-1}
         type='checkbox'
         checked={checked}
         onChange={onCheck}
@@ -24,3 +29,10 @@ const TodoListItem = ({ onCheck, checked, onDelete, label }) => (
 );
 
 export default TodoListItem;
+
+type TodoListParamsTypes = {
+  onCheck: ChangeEventHandler<HTMLInputElement>;
+  checked: boolean;
+  onDelete: MouseEventHandler<HTMLButtonElement>;
+  label: string;
+};
